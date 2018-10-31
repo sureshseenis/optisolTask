@@ -1,6 +1,7 @@
 package parcelable.arivista.com.optisoltest.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
 
 import parcelable.arivista.com.optisoltest.R;
+import parcelable.arivista.com.optisoltest.circleClasses.RoundedTransformationBuilder;
 import parcelable.arivista.com.optisoltest.holder.List_Holder;
 
 public class Adapter_List extends RecyclerView.Adapter<Adapter_List.ViewHolder> {
@@ -38,12 +41,22 @@ public class Adapter_List extends RecyclerView.Adapter<Adapter_List.ViewHolder> 
         holder.text.setText(item.getTitle());
         holder.image.setImageBitmap(null);
         holder.expantable_Image.setImageBitmap(null);
+
+        Transformation transformation = new RoundedTransformationBuilder()
+                .borderColor(Color.BLACK)
+                .borderWidthDp(3)
+                .cornerRadiusDp(30)
+                .oval(false)
+                .build();
+
         Picasso.with(holder.image.getContext()).cancelRequest(holder.image);
-        Picasso.with(holder.image.getContext()).load(item.getUrl()).into(holder.image);
+        Picasso.with(holder.image.getContext()).load(item.getUrl()).fit().transform(transformation).into(holder.image);
         Picasso.with(holder.expantable_Image.getContext()).cancelRequest(holder.expantable_Image);
         Picasso.with(holder.expantable_Image.getContext()).load(item.getUrl()).into(holder.expantable_Image);
         holder.itemView.setTag(item);
         holder.expantable_Image.setVisibility(View.GONE);
+
+
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
