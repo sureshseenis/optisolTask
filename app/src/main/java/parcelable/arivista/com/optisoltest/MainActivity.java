@@ -8,10 +8,6 @@ import android.support.v7.widget.Toolbar;
 
 
 
-/**
- * Created by Suresh on 28/06/2018
- */
-
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 
     private TabLayout tabLayout;

@@ -22,9 +22,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Suresh on 28/06/2018
- */
 
 public class ListViewClass extends Fragment {
 
